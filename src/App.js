@@ -3,13 +3,12 @@ import './App.css';
 
 function App() {
 
-const [zooAnaimal, setZooAnimal] = useState([]);
+const [zooAnimal, setZooAnimal] = useState([]);
 const [gameofthrones, setGOT] = useState([]);
 const [lucifer, setLucifer] = useState([]);
 const [ghibli, setGhibli] = useState([]);
 const [error, setError] = useState(null);
-const gotid = Math.floor(Math.random()*100000)
-const luciferid = Math.floor(Math.random()*100000)
+
 
 useEffect(()=>{
   const fetchData = async ()=>{
@@ -96,10 +95,10 @@ useEffect(()=>{
       <h2>Animals</h2>
       {error && <p>{error}</p>}
       <div>
-      {zooAnaimal.map((animal)=>(
+      {zooAnimal.map((animal)=>(
         <div key={animal.id}>
         <h3>{animal.name}</h3>
-        <img className="img" src={animal.image_link} alt="ainmal pic"></img>
+        <img className="img" src={animal.image_link} alt="animal pic"></img>
         </div>
       ))}
       </div>
@@ -108,7 +107,7 @@ useEffect(()=>{
         <h2>Game of Thrones Quotes</h2>
       </div>
       {gameofthrones.map((got)=>(
-        <div key={gotid}>
+        <div key={got.sentence}>
         <h3>{got.sentence}</h3>
         </div>
       ))}
@@ -116,7 +115,7 @@ useEffect(()=>{
         <h2>Lucifer Quotes</h2>
       </div>
       {lucifer.map((luci)=>(
-        <div key={luciferid}>
+        <div key={luci.quote}>
         <h3>{luci.quote}</h3>
         <h4>{luci.author}</h4>
         </div>
@@ -128,8 +127,8 @@ useEffect(()=>{
         <div key={gib.id}>
         <h2>{gib.title}</h2>
         <h4>{gib.original_title}</h4>
-        <img className="img" scr={gib.image} alt="pics"></img>
-        <img className="img" scr={gib.movie_banner} alt="pic banner"></img>
+        <img className="img" src={gib.image} alt="pics"></img>
+        <img className="img" src={gib.movie_banner} alt="pic banner"></img>
         <p className="p1">{gib.description}</p>
         <p>{gib.director}</p>
         </div>
